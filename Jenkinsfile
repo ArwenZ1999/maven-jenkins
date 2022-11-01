@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent any//build any
   tools {
         maven "m3" 
    }
