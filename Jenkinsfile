@@ -29,7 +29,13 @@ pipeline {
            { 
               sh "mvn sonar:sonar -Dsonar.projectKey=maven-jenkins-pipeline -Dsonar.host.url=http://35.197.246.176:9000/"  
            } 
-        } 
+            timeout(time: 2, unit: 'MINUTES')
+                 {
+                     script {
+                       waitForQualityGate abortPipeline: true
+                           }
+                  }
+            } 
       } 
       stage('Dev Environment') 
       { 
